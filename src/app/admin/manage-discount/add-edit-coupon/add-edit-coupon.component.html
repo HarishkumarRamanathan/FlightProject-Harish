@@ -1,0 +1,63 @@
+<div class="col-4 offset-4">
+    <h1 *ngIf="isAddMode" class="text-center">Add Coupon</h1>
+    <h1 *ngIf="!isAddMode" class="text-center">Update Coupon</h1>
+    <form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+        <div class="form-group form-check-inline col-5">
+            <label for="couponCode">
+                Coupon Code
+            </label>
+            <input type="text" id="couponCode" name="couponCode" formControlName="couponCode" class="form-control">
+        </div>
+        <div class="pb-3">
+            <div class="form-group form-check-inline col-5">
+                <label for="depart">
+                    start Date
+                </label>
+                <input type="date" [min]="minDate" id="startDate" name="startDate" formControlName="startDate"  class="form-control">
+            </div>
+            <div class="form-group form-check-inline col-5">
+                <label for="return">
+                    End Date
+                </label>
+                <input type="date" [min]="minDate" id="endDate" name="endDate" formControlName="endDate"  class="form-control">
+            </div>
+        </div>
+        <div class="form-group form-check-inline pb-2 col-5">
+            <label for="percentage">
+                Percentage
+            </label>
+            <input type="number" max="100" min="1" id="percentage" name="percentage" formControlName="percentage" class="form-control">
+        </div>
+        <div class="form-group form-check-inline pb-2 col-5">
+            <label for="maxAmount">
+                Maximum Amount
+            </label>
+            <input type="number" id="maxAmount" name="maxAmount" formControlName="maxAmount" class="form-control">
+        </div>
+        <div *ngIf="isAddMode" class="form-group row pb-2">
+            <div>
+                <button type="submit" [disabled]="!couponForm.valid" class="btn btn-primary">Add
+                    Coupon</button>
+            </div>
+        </div>
+        <div *ngIf="!isAddMode" class="form-group row pb-2">
+            <div>
+                <button type="submit" [disabled]="!couponForm.valid" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+        <div class="form-group row pb-2" *ngIf="successMsg && isAddMode">
+            <div class=" offset-2 col-8">
+                <p class="alert alert-success">
+                    <strong>Coupon Successfully Added !!!!!</strong>
+                </p>
+            </div>
+        </div>
+        <div class="form-group row pb-2" *ngIf="successMsg && !isAddMode">
+            <div class=" offset-2 col-8">
+                <p class="alert alert-success">
+                    <strong>Coupon Successfully Updated !!!!!</strong>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

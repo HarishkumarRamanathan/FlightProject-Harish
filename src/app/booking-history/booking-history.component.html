@@ -1,0 +1,19 @@
+<div class="offset-3 col-6 pt-5">
+
+    <table class="table-bordered">
+        <tbody>
+            <tr *ngFor="let f of  manageBookData">
+                <td>{{f.dateOfJourney | manageDate}} </td>
+                <td>{{f.flightName}}</td>
+                <td> {{f.price  | currency:"Rs."}}</td>
+                <td>{{f.passengerDetails.length}} seats</td>
+                <td>
+                    <button class="btn btn-primary" (click)="viewDetails(f)">
+                        View Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>

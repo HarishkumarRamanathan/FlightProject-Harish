@@ -1,0 +1,133 @@
+<h3 *ngIf="this.isAddMode" class="text-center">Add Airlines</h3>
+<h3 *ngIf="!this.isAddMode" class="text-center">Scheduled Airlines</h3>
+<div class="offset-3 col-6">
+    <form [formGroup]="airlineCreateForm" (ngSubmit)="onSubmit()">
+        <div class="d-flex">
+            <div class="form-group row pb-2 col-6 pe-3">
+                <label for="airlineName">Airline Name</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="airlineName"
+                        placeholder="Enter Airline Name" required>
+                </div>
+            </div>
+            <div class="form-group col-6 row pb-2 pe-3" *ngIf="isAddMode">
+                <label for="instrumentUsed">Instrument Used</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="instrumentUsed"
+                        placeholder="Enter Instrument Used" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group row pb-2 pe-3 col-6">
+                <label for="fromPlace">From Place</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="fromPlace" placeholder="Enter From Place"
+                        required>
+                </div>
+            </div>
+            <div class="form-group row pb-2 pe-3 col-6">
+                <label for="toPlace">To Place</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="toPlace" placeholder="Enter to Place"
+                        required>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group row pb-2 col-6 pe-3">
+                <label for="startDateTime">Start Time</label>
+                <div>
+                    <input type="time" class="form-control" formControlName="startDateTime" required>
+                </div>
+            </div>
+            <div class="form-group col-6 row pb-2 pe-3">
+                <label for="endTime">End Time</label>
+                <div>
+                    <input type="time" class="form-control" formControlName="endDateTime" required>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-check form-check-inline" *ngFor="let fd of flightDays; let i = index"
+                formArrayName="scheduledDays">
+                <input class="form-check-input" type="checkbox" [formControlName]="i">
+                <label class="form-check-label">{{fd.name}} </label>
+            </div>
+        </div>
+        <div >
+
+            <div class="form-group row pb-2">
+                <label for="totalNoOfSeats">Number of seats</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="totalNoOfSeats"
+                        placeholder="Enter Number of seats" required>
+                </div>
+            </div>
+            <div class="form-group row pb-2">
+                <label for="totalNoOfBussinessSeats">Number Of bussiness Seats</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="totalNoOfBussinessSeats"
+                        placeholder="Enter No of Bussiness seats" required>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <div class="form-group row pb-2">
+                <label for="price">Price</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="price" placeholder="Enter Price"
+                        required>
+                </div>
+            </div>
+            <div class="form-group row pb-2">
+                <label for="NoOfRows">Number of Rows</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="NoOfRows"
+                        placeholder="Enter NUmber of Rows" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <p>Complimentary Refreshment</p>
+            <div class="form-check form-check-inline" *ngFor="let ml of mealList; let i = index" formArrayName="meal">
+                <input class="form-check-input" type="checkbox" [formControlName]="i">
+                <label class="form-check-label"> {{ml.name}} <br></label>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div *ngIf="isAddMode" class="form-group row pb-2">
+                <div>
+                    <button type="submit" [disabled]="!airlineCreateForm.valid" class="btn btn-primary">Add
+                        Airline</button>
+                </div>
+            </div>
+            <!-- <div *ngIf="!isAddMode" class="form-group row pb-2">
+                <div>
+                    <button type="submit" [disabled]="!airlineCreateForm.valid" class="btn btn-primary">Update
+                        Airline</button>
+                </div>
+            </div> -->
+            <div *ngIf="isAddMode && successMsg" class="form-group row pb-2">
+                <div class=" offset-2">
+                    <p class="alert alert-success">
+                        Added Successfully..
+                    </p>
+                </div>
+            </div>
+            <!-- <div *ngIf="!isAddMode && successMsg" class="form-group row pb-2">
+                <div class=" offset-2">
+                    <p class="alert alert-success">
+                        Updated Successfully...
+                    </p>
+                </div>
+            </div> -->
+        </div>
+
+    </form>
+
+</div>

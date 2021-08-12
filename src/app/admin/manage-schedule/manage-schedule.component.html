@@ -1,0 +1,49 @@
+<p>manage-schedule works!</p>
+<div class="col-2 offset-5">
+    <form [formGroup]="searchFlightForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="airlineName">Select Airline</label>
+            <select class="form-select" (change)="changeFlightName($event)" formControlName="airlineName">
+                <option selected>Choose your Airline</option>
+                <option *ngFor="let fd of airlineNameUnique" [value]="fd">{{fd}}</option>
+              </select>
+        </div>
+        <div>
+            <label for="flightNumber">Select Flight Number</label>
+            <select  class="form-select" formControlName="flightNumber">
+                <option value="">Choose your Flight Number</option>
+                <option *ngFor="let fd of fliteredFlight" [value]="fd.id">{{fd.id}}</option>
+              </select>
+        </div>
+        <div class="form-group pb-3">
+            <label>Instrument Used</label>
+            <input  type="text" class="form-control"  formControlName="instrumentUsed">
+        </div>
+        <div class="form-group row pb-2">
+            <div>
+                <button type="submit" [disabled]="!searchFlightForm.valid" class="btn btn-primary">Search
+                    Airline</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="offset-4 col-4 pt-5">
+            <h3 *ngIf="searchedFlight && searchedFlight.length>0">Search Results</h3>
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr *ngFor="let f of  searchedFlight">
+                    <td>{{f.airlineName}} </td>
+                    <td>{{f.fromPlace}}</td>
+                    <td>{{f.toPlace}}</td>
+                    <td>
+                        <button class="btn btn-secondary" (click)="viewFlightDetails(f)">
+                            View Schedule Details
+                        </button>
+                    </td>
+                 </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>

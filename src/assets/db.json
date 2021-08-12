@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "userName": "amuthan",
+      "email": "amuthanelumalai@gmail.com",
+      "password": "12345678",
+      "valid": true,
+      "role": "user",
+      "id": 1
+    }
+  ],
+  "flights": [
+    {
+      "id": 1,
+      "airlineName": "AirAsia",
+      "fromPlace": "chennai",
+      "toPlace": "bangalore",
+      "startDateTime": "09:00",
+      "endDateTime": "10:00",
+      "scheduledDays": [
+        "daily"
+      ],
+      "instrumentUsed": "A320",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 2300,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "none"
+      ]
+    },
+    {
+      "id": 2,
+      "airlineName": "AirAsia",
+      "fromPlace": "bangalore",
+      "toPlace": "chennai",
+      "startDateTime": "09:00",
+      "endDateTime": "11:00",
+      "scheduledDays": [
+        "daily"
+      ],
+      "instrumentUsed": "A320",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 3300,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "non-veg",
+        "none"
+      ]
+    },
+    {
+      "id": 3,
+      "airlineName": "AirIndia",
+      "fromPlace": "bangalore",
+      "toPlace": "delhi",
+      "startDateTime": "09:00",
+      "endDateTime": "11:00",
+      "scheduledDays": [
+        "daily"
+      ],
+      "instrumentUsed": "A320",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 7300,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "non-veg",
+        "none"
+      ]
+    },
+    {
+      "id": 4,
+      "airlineName": "Spice jet",
+      "fromPlace": "chennai",
+      "toPlace": "bangalore",
+      "startDateTime": "11:00",
+      "endDateTime": "13:00",
+      "scheduledDays": [
+        "monday",
+        "wednesday",
+        "friday"
+      ],
+      "instrumentUsed": "B737",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 4300,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "none"
+      ]
+    },
+    {
+      "id": 5,
+      "airlineName": "Spice jet",
+      "fromPlace": "bangalore",
+      "toPlace": "chennai",
+      "startDateTime": "15:00",
+      "endDateTime": "17:00",
+      "scheduledDays": [
+        "tuesday",
+        "thursday",
+        "saturday"
+      ],
+      "instrumentUsed": "A320",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 3000,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "non-veg",
+        "none"
+      ]
+    },
+    {
+      "id": 6,
+      "airlineName": "AirIndia",
+      "fromPlace": "bangalore",
+      "toPlace": "chennai",
+      "startDateTime": "18:00",
+      "endDateTime": "20:00",
+      "scheduledDays": [
+        "sunday"
+      ],
+      "instrumentUsed": "A320",
+      "totalNoOfSeats": 100,
+      "totalNoOfBussinessSeats": 30,
+      "price": 4300,
+      "NoOfRows": 25,
+      "meal": [
+        "veg",
+        "non-veg",
+        "none"
+      ]
+    }
+  ]
+}

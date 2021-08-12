@@ -1,0 +1,70 @@
+<div>
+	<div class="offset-1 col-10 pt-4">
+        <h1>Booking Details</h1>
+
+        
+        <table *ngIf="row.length>0" class="table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Meal</th>
+                    <th scope="col">Seat Number</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of row; let i = index">
+                    <td><input type="text" [(ngModel)]="item.name"></td>
+                    <!-- <td><input type="text" [(ngModel)]="item.gender"></td> -->
+                    <td>
+                        <select class="form-select"  [(ngModel)]="item.gender" name="genderSelection">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                    </td>
+                    <td><input type="number" [(ngModel)]="item.age"></td>
+                    <td>
+                        <select class="form-select"  [(ngModel)]="item.meal" name="mealSelection">
+                            <option value="veg">Veg</option>
+                            <option value="non-veg">Non Veg</option>
+                          </select>
+                    </td>
+                    <td><input type="number" [(ngModel)]="item.seatNumber"></td>
+                    <td> <button class="btn btn-secondary" (click)="clearRow(i)">Clear</button></td>
+                    <td> <button class="btn btn-danger" (click) = "deleteRow(i)">remove</button></td>
+                </tr>
+            </tbody>
+            
+        </table>
+        <div class="text-end">
+            <button (click)="addTable()" class="btn btn-primary"><strong>+</strong></button> <br> <br>
+        </div>
+        <!-- <div >
+            <button class="btn btn-primary" (click)=calculatePrice()>check price</button>
+        </div> -->
+        <div>
+            <div *ngIf="bookService.bookingData.length===2 && !bookFlag">
+                {{bookingData.price*row.length + returnBookingData.price*row.length  | currency:"₹"}}
+            </div>
+            <div *ngIf="bookService.bookingData.length===1 && !bookFlag">
+                {{bookingData.price*row.length  | currency:"Rs."}}
+            </div>
+        </div>
+        <!-- <div *ngIf="totalPrice>0">
+            {{totalPrice| currency:"₹"}}  
+        </div> -->
+        <div class="pt-3" *ngIf="row.length>0">
+            <button class="btn btn-success" (click)="confirmBooking()">
+                Confirm
+            </button>
+        </div>
+        <div class="pt-3" *ngIf="bookFlag">
+            <p class="alert alert-success">
+                Ticket has been booked successfully....
+            </p>
+        </div>
+    </div>
+   
+</div>

@@ -1,0 +1,43 @@
+<!-- <div>
+    <form #editAirlineForm="ngForm" (ngSubmit)="onSubmit(editAirlineForm)">
+        <label>Search By Airline Id</label>
+        <input type="text" placeholder="search by id" id="airlineId" name="airlineId" ngModel>
+        <button type="submit">search</button>
+    </form> 
+</div> -->
+
+<div class="col-12 row ps-2">
+    <div *ngIf="result.length>0">
+
+
+        <table  mat-table class="table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Airline Name</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">StartTime</th>
+                    <th scope="col">EndTime</th>
+                    <th scope="col">price</th>
+                    <th scope="col" style="width: 500px;">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of  result">
+                    <td>{{f.id}}</td>
+                    <td>{{f.airlineName}}</td>
+                    <td>{{f.fromPlace}}</td>
+                    <td>{{f.toPlace}}</td>
+                    <td>{{f.startDateTime}}</td>
+                    <td>{{f.endDateTime}}</td>
+                    <td>{{f.price | currency:"₹"}}</td>
+                     <td style="text-align:right"><button mat-raised-button color="primary" type="submit" (click)="updateAirline(f)">Update</button></td> 
+                    <td style="text-align:right"><button mat-button color="primary" type="submit" (click)="deleteAirline(f)">delete</button></td> 
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

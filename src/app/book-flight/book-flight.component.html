@@ -1,0 +1,141 @@
+<div class="text-center">
+    <h1>Search Avaliability</h1>
+</div>
+<div class="offset-4 col-6">
+    <form #bookFlightForm="ngForm" (ngSubmit)="onSubmit(bookFlightForm)">
+        <div class="form-group pb-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="oneway" [(ngModel)]="oneway" [value]="true">
+                <label class="form-check-label" for="oneway">One way</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="oneway" [(ngModel)]="oneway" [value]="false">
+                <label class="form-check-label" for="twoway">Round trip</label>
+            </div>
+        </div>
+        <div class="pb-3">
+            <div>
+                <label for="fromPlace">
+                    From
+                </label>
+                <input type="text" id="fromPlace" name="fromPlace" ngModel class="form-control">
+            </div>
+            <div>
+                <label for="toPlace">
+                    To
+                </label>
+                <input type="text" id="toPlace" name="toPlace" ngModel class="form-control">
+            </div>
+
+        </div>
+        <div class="pb-3">
+            <div>
+                <label for="depart">
+                    DepartureDate
+                </label>
+                <input type="date" [min]="minDate" id="depart" name="depart" ngModel class="form-control">
+            </div>
+            <div>
+                <label for="return">
+                    ReturnDate
+                </label>
+                <input type="date" [min]="minDate" [disabled]="oneway" id="return" name="return" ngModel
+                    class="form-control">
+            </div>
+        </div>
+        <div class="form-group pb-3">
+            <button type="submit" [disabled]="!bookFlightForm.form.valid" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+<!-- <div *ngFor="let f of  result">
+<ul>
+    <li>
+        {{f.airlineName}}
+    </li>
+    <li>
+        {{f.price}}
+    </li>
+    <li>
+        {{f.startTime}}
+    </li>
+    <li>
+        {{f.endTime}}
+    </li>
+</ul>
+</div> -->
+<!-- <div *ngFor="let f of  returnFlights">
+    <ul>
+        <li>
+            {{f.airlineName}}
+        </li>
+        <li>
+            {{f.price}}
+        </li>
+        <li>
+            {{f.startTime}}
+        </li>
+        <li>
+            {{f.endTime}}
+        </li>
+    </ul>
+    </div> -->
+<div class="col-12 row ps-2">
+    <div *ngIf="result.length>0" class="col-6">
+
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Airline Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of  result">
+                    <td>{{f.airlineName}}</td>
+                    <td>{{f.startDateTime}} - {{f.endDateTime}}</td>
+                    <td> {{f.price | currency:"₹"}}</td>
+                    <td>
+                        <!-- <button (click)="bookFlight(f)" class="btn btn-success">Book</button> -->
+                        <!-- <input class="form-check-input" type="radio" name="departFlight" ngModel> -->
+                        <input class="form-check-input" type="radio" name="departFlight" value="departFlight"
+                            (click)="bookDepartFlight(f)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="returnFlights.length>0" class="col-6">
+
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Airline Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let f of  returnFlights">
+                    <td>{{f.airlineName}}</td>
+                    <td>{{f.startDateTime}} - {{f.endDateTime}}</td>
+                    <td> {{f.price | currency:"₹"}}</td>
+                    <td>
+                        <!-- <button (click)="bookReturnFlight(f)" class="btn btn-success">Book</button> -->
+                        <input class="form-check-input" type="radio" (click)="bookReturnFlight(f)">
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+
+</div>
+<div *ngIf="result.length>0 || returnFlights.length>0">
+    <button [disabled]="!(departFlightData || (departFlightData && returnFlightData))" (click)="bookFlight()" class="btn btn-success">Book</button>
+</div>

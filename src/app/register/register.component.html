@@ -1,0 +1,64 @@
+<div class="form-group row pb-4">
+    <div class="text-center">
+        <h1>SIGN UP</h1>
+    </div>
+</div>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
+    <div class="form-group row pb-2">
+        <label class="col-2 offset-3" for="userName">User Name</label>
+        <div class="col-3">
+            <input type="text" class="form-control col-sm-3" formControlName="userName" placeholder="Enter User Name" required>
+        </div>
+    </div>
+    <div class="form-group row pb-2">
+        <label class="col-2 offset-3" for="email">Email address</label>
+        <div class="col-3">
+            <input type="email" class="form-control col-sm-3" formControlName="email" placeholder="Enter email" required>
+        </div>
+        <div class="offset-5" *ngIf="registrationForm.controls.email.dirty">
+            <div class='error-alert' *ngIf="!registrationForm.controls.email.valid && registrationForm.controls.email.touched">
+               Email must be valid
+        </div>
+        <div class='error-alert'*ngIf="emailExist">
+            Email already exists
+        </div>
+        </div>
+    </div>
+    <div class="form-group row pb-2">
+        <label class="col-2 offset-3" for="password">Password</label>
+        <div class="col-3">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
+        </div>
+        <div class="offset-5" *ngIf="registrationForm.controls.password.dirty">
+            <div class='error-alert' *ngIf="!registrationForm.controls.password.valid && registrationForm.controls.password.touched">
+                Password should be minimum of five characters
+            </div>
+        </div>
+    </div>
+    <div class="form-group row pb-2">
+        <label class="col-2 offset-3" for="cnfmPassword">Confirm Password</label>
+        <div class="col-3">
+            <input type="password" class="form-control" id="cnfmPassword" formControlName="cnfmPassword" placeholder="Confirm Password" required>
+        </div>
+        <div class="offset-5" *ngIf="registrationForm.controls.cnfmPassword.dirty">
+            <div class='error-alert' *ngIf="!registrationForm.controls.cnfmPassword.valid && registrationForm.controls.cnfmPassword.touched">
+                Confirm password should match
+        </div>
+        </div>
+        
+    </div>
+
+    <div class="form-group row pb-2">
+        <div class="col-2 offset-5">
+            <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+
+    <div class="form-group row pb-2" *ngIf="showMsg">
+        <div class="col-5 offset-3">
+          <p class="alert alert-success">
+              <strong>Registration Success!</strong> Please click here to <a routerLink="/login">login</a>.
+          </p>
+        </div>
+      </div>
+</form>

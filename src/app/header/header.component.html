@@ -1,0 +1,24 @@
+  <nav *ngIf="userservice.user && userservice.user.valid" class="navbar navbar-light">
+    <a class="navbar-brand">FLIGHT BOOKING</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a *ngIf="userservice.user && userservice.user.role==='user'" class="nav-item nav-link" routerLink="/bookFlight">Flight Booking</a>
+        <a  *ngIf="userservice.user && userservice.user.role==='user'"class="nav-item nav-link" routerLink="/manageBooking">Manage Booking</a>
+        <a *ngIf="userservice.user && userservice.user.role==='user'" class="nav-item nav-link" routerLink="/bookingHistory">Booking History</a>
+        <a *ngIf="userservice.user && userservice.user.role==='admin'" class="nav-item nav-link" routerLink="/admin/manageAirline">Add Airline</a>
+        <a *ngIf="userservice.user && userservice.user.role==='admin'" class="nav-item nav-link" routerLink="/admin/editAirline">Manage Airline</a>
+
+        <a *ngIf="userservice.user && userservice.user.role==='admin'" class="nav-item nav-link" routerLink="/admin/manageDiscount">Manage Discount</a>
+        <!-- <a *ngIf="userservice.user && userservice.user.role==='admin'" class="nav-item nav-link" routerLink="/admin/manageSchedule">Manage Schedule</a> -->
+      </div>
+    </div>
+    <div class="navbar-nav">
+      <button *ngIf="userLogin" (click)="redirect()" class="nav-item nav-link pointerClass btn btn-primary">
+        Logout
+      </button>
+      <a *ngIf="!userLogin" routerLink="/login" class="nav-item nav-link pointerClass">
+        Login
+      </a>
+    </div>
+      
+  </nav>
