@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManageDiscountService } from 'src/app/admin/manage-discount/manage-discount.service';
 import { Flight } from 'src/app/model/flight';
 import { UserService } from 'src/app/service/user-service';
 import { BookFlightService } from '../book-flight.service';
@@ -23,9 +24,15 @@ export class BookingDetailsComponent implements OnInit {
   totalPrice:number=0;
   returnBookingData:any;
   bookFlag:boolean=false;
-  constructor(public bookService:BookFlightService,private userService:UserService) { }
+  allCoupon:any;
+  appliedCouponCode:any;
+  constructor(public bookService:BookFlightService,private userService:UserService,private manageDiscountService:ManageDiscountService) { }
 
   ngOnInit(): void {
+    this.manageDiscountService.getCoupon().subscribe((response)=> {
+      console.log(response)
+      this.allCoupon=response.body;
+    })
     this.bookingData=this.bookService.bookingData[0].bookFlight;
     if(this.bookService.bookingData.length==2){
       this.returnBookingData=this.bookService.bookingData[1].bookFlight;  
@@ -69,6 +76,10 @@ export class BookingDetailsComponent implements OnInit {
   //     }
       
   // }
+
+  changeCoupon(){
+console.log(this.appliedCouponCode)
+  }
   confirmBooking(){ 
     let data;
     if(this.bookService.bookingData.length==2){

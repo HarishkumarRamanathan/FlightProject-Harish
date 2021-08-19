@@ -11,8 +11,9 @@ export class ManageDatePipe implements PipeTransform {
   }
   transform(value: string): unknown {
     var date1 =value.split('-')
-    var newDate = date1[1] + '/' +date1[0] +'/' +date1[2];
-    return this.datePipe.transform(newDate,'MMM d, y');
+    var newDate = date1[1] + '/' +date1[2] +'/' +date1[0];
+    console.log(date1)
+    return this.datePipe.transform(newDate,'MMMM d, y');
   }
 
 }

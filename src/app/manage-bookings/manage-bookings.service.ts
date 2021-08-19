@@ -11,7 +11,7 @@ export class ManageBookingService {
   constructor(private http: HttpClient) { }
 
   getBooking(email:string) {
-    let endpoint="http://localhost:3000/bookingHistory?email="+email;
+    let endpoint="http://localhost:9004/"+email;
     console.log(endpoint);
     return this.http.get<any>(endpoint,
     { observe: 'response' }).pipe(res => {

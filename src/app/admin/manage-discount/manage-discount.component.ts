@@ -23,4 +23,12 @@ export class ManageDiscountComponent implements OnInit {
     this.router.navigate(['admin/addEditDiscount',f.id]);
   }
 
+  delete(f:any){
+    this.couponService.deleteCoupon(f.id).subscribe((response) =>{
+      console.log(response)
+      this.couponService.getCoupon().subscribe((response)=>{
+        this.couponData=response.body;
+      })
+    })
+  }
 }

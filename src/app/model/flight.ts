@@ -13,10 +13,12 @@ export class Flight {
     public price: number;
     public noOfRows:number;
     public meal:string[];
+   
     
 
     constructor( id:number,airlineName: string,fromPlace:string,toPlace:string,price: number,scheduledDays:string[],instrumentUsed:string
-        ,startDateTime:string,endDateTime:string,totalNoOfSeats:number,totalNoOfBussinessSeats:number,noOfRows:number,meal:string[]) { 
+        ,startDateTime:string,endDateTime:string,totalNoOfSeats:number,totalNoOfBussinessSeats:number,noOfRows:number,meal:string[]
+      ) { 
         this.id=id;
         this.airlineName=airlineName;
         this.fromPlace=fromPlace;
@@ -30,6 +32,7 @@ export class Flight {
         this.totalNoOfBussinessSeats=totalNoOfBussinessSeats;
         this.noOfRows=noOfRows;
         this.meal=meal;
+    
      }
 
 }

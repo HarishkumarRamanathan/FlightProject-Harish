@@ -43,7 +43,8 @@ export class BookFlightComponent implements OnInit {
     let departDay = this.day[newDate.getDay()];
     //alert(Flight);
     this.result = this.data.filter((f: Flight) => (f.fromPlace === fromPlace.toLowerCase()
-      && f.toPlace === toPlace.toLowerCase() && (f.scheduledDays.includes('daily') 
+      && f.toPlace === toPlace.toLowerCase()
+      && (f.scheduledDays.includes('daily') 
       || f.scheduledDays.includes(departDay))));
     //alert(this.result.length);
     if (!this.oneway) {

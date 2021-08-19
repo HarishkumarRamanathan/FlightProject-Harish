@@ -10,34 +10,44 @@
     <div *ngIf="result.length>0">
 
 
-        <table  mat-table class="table-bordered">
+        <table mat-table class="table-bordered">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Airline Name</th>
+                    <th scope="col">Instrument Used</th>
                     <th scope="col">From</th>
                     <th scope="col">To</th>
                     <th scope="col">StartTime</th>
                     <th scope="col">EndTime</th>
                     <th scope="col">price</th>
-                    <th scope="col" style="width: 500px;">Action</th>
+                    <th scope="col" style="width: 700;">Action</th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let f of  result">
+                    <!-- <ng-container *ngIf="isAllowed(f)"> -->
                     <td>{{f.id}}</td>
                     <td>{{f.airlineName}}</td>
+                    <td>{{f.instrumentUsed}}</td>
                     <td>{{f.fromPlace}}</td>
                     <td>{{f.toPlace}}</td>
                     <td>{{f.startDateTime}}</td>
                     <td>{{f.endDateTime}}</td>
                     <td>{{f.price | currency:"₹"}}</td>
-                     <td style="text-align:right"><button mat-raised-button color="primary" type="submit" (click)="updateAirline(f)">Update</button></td> 
-                    <td style="text-align:right"><button mat-button color="primary" type="submit" (click)="deleteAirline(f)">delete</button></td> 
+                    <!-- </ng-container> -->
+                    <td>
+                        <button mat-raised-button color="primary" type="submit"
+                            (click)="updateAirline(f)">Update</button>
+
+                            <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+                                type="submit" (click)="deleteAirline(f)">delete</button>
+                            <!-- <button mat-button type="submit" (click)="changeState(f)">Show/Hide</button> -->
+                    </td>
+
             </tbody>
         </table>
 
     </div>
 </div>
-

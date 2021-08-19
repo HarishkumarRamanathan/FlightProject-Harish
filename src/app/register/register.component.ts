@@ -41,17 +41,17 @@ export class RegisterComponent implements OnInit {
 onSubmit() {
   // TODO: Use EventEmitter with form value
   this.user=new User(this.registrationForm.controls.userName.value,this.registrationForm.controls.email.value,this.registrationForm.controls.password.value,true,'user');
-  this.registerService.getUser(this.registrationForm.controls.email.value).subscribe((response)=>{
-    if(response && response.body.length==0){
+  // this.registerService.getUser(this.registrationForm.controls.email.value).subscribe((response)=>{
+    // if(response && response.body.length==0){
       this.registerService.addUser(this.user).subscribe((response)=>{
     this.showMsg=true;
     this.registrationForm.reset();
   })
-    }
-    else{
-      this.emailExist=true;
-    }
+    // }
+    // else{
+    //   this.emailExist=true;
+    // }
 
-  })
+  // })
 }
 }

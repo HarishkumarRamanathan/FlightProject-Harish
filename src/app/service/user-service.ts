@@ -11,7 +11,7 @@ export class UserService {
   constructor() { }
 
   public setUserValue(newUser:UserRole){
-    this.user=new UserRole(newUser.userName,newUser.email,newUser.valid,newUser.role);
+    this.user=new UserRole(newUser.userName,newUser.email,newUser.valid,newUser.role,newUser.token);
   }
 
   public get userValue (){

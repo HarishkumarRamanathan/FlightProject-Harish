@@ -47,4 +47,18 @@ export class EditAirlinesComponent implements OnInit {
     
   })
 }
+
+// state: boolean = false;
+
+// isAllowed = (optional:any) => {
+//   return optional === 0 ? true : this.state;
+// }
+
+// changeState = (f:any) => {
+  
+//   f.showHide = !f.showHide;
+//   alert(f.showHide);
+//   this.bookService.updateFlight(f);
+// }
+
 }

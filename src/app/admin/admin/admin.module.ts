@@ -31,11 +31,11 @@ const routes: Routes = [
   }, 
   {
     path: 'addEditDiscount',
-    component: AddEditCouponComponent,canActivate:[AdminGuard]
+    component: AddEditCouponComponent
   },
   {
     path: 'addEditDiscount/:id',
-    component: AddEditCouponComponent,canActivate:[AdminGuard]
+    component: AddEditCouponComponent
   }
 ];
 

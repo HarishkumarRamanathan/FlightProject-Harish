@@ -4,22 +4,27 @@
         <thead>
             <tr>
                 <th scope="col">Coupon Code</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
+                <!-- <th scope="col">Start Date</th>
+                <th scope="col">End Date</th> -->
                 <th scope="col">Percentage</th>
                 <th scope="col">Maximum Amount</th>
+                <th scope="col"> Action </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let cd of  couponData">
                 <td>{{cd.couponCode}}</td>
-                <td>{{cd.startDate | manageDate}} </td>
-                <td>{{cd.endDate | manageDate}} </td>
+                <!-- <td>{{cd.startDate | manageDate}} </td>
+                <td>{{cd.endDate | manageDate}} </td> -->
                 <td>{{cd.percentage}} %</td>
                 <td> {{cd.maxAmount  | currency:"Rs."}}</td>
                 <td>
-                    <button class="btn btn-secondary" (click)="edit(cd)">
+                    
+                    <button  mat-raised-button color="primary" (click)="edit(cd)">
                         Edit
+                    </button><hr>
+                    <button mat-flat-button color='accent' (click)="delete(cd)">
+                        Delete
                     </button>
                 </td>
             </tr>

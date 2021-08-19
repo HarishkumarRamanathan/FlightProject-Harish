@@ -9,7 +9,7 @@ export class ManageDiscountService {
   constructor(private httpClient:HttpClient) { }
 
   createCoupon(couponData:any){
-    let endpoint="http://localhost:3000/discount";
+    let endpoint="http://localhost:9003/discount/add";
     return this.httpClient.post<any>(endpoint,couponData,
   { observe: 'response' }).pipe(res => {
     return res;
@@ -18,7 +18,7 @@ export class ManageDiscountService {
 
   
   getCouponById(id:any){
-    let endpoint="http://localhost:3000/discount/"+id;
+    let endpoint="http://localhost:9003/discount/getdiscount/"+id;
     return this.httpClient.get<any>(endpoint,
   { observe: 'response' }).pipe(res => {
     return res;
@@ -26,7 +26,7 @@ export class ManageDiscountService {
   }
 
   updateCoupon(id:any,couponData:any){
-    let endpoint="http://localhost:3000/discount/"+id;
+    let endpoint="http://localhost:9003/discount/update/"+id;
     return this.httpClient.put<any>(endpoint,couponData,
   { observe: 'response' }).pipe(res => {
     return res;
@@ -34,8 +34,16 @@ export class ManageDiscountService {
   }
 
   getCoupon(){
-    let endpoint="http://localhost:3000/discount/";
+    let endpoint="http://localhost:9003/discount/alldiscount";
     return this.httpClient.get<any>(endpoint,
+  { observe: 'response' }).pipe(res => {
+    return res;
+  });
+  }
+
+  deleteCoupon(id:any){
+    let endpoint="http://localhost:9003/discount/deletediscount/"+id;
+    return this.httpClient.delete<any>(endpoint,
   { observe: 'response' }).pipe(res => {
     return res;
   });

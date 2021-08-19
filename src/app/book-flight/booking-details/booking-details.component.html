@@ -45,6 +45,13 @@
             <button class="btn btn-primary" (click)=calculatePrice()>check price</button>
         </div> -->
         <div>
+            <label for="couponLable">Coupon</label>
+            <select class="form-select" (change)="changeCoupon()" [(ngModel)]="appliedCouponCode">
+                <option selected>Choose your discount</option>
+                <option *ngFor="let fd of allCoupon" [value]="fd.couponCode">{{fd.couponCode}}</option>
+              </select>
+        </div>
+        <div>
             <div *ngIf="bookService.bookingData.length===2 && !bookFlag">
                 {{bookingData.price*row.length + returnBookingData.price*row.length  | currency:"₹"}}
             </div>

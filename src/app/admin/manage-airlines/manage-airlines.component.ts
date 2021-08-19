@@ -74,7 +74,7 @@ export class ManageAirlinesComponent implements OnInit {
       'totalNoOfSeats': new FormControl(null, [Validators.required]),
       'totalNoOfBussinessSeats': new FormControl(null, [Validators.required]),
       'price': new FormControl(null, [Validators.required]),
-      'NoOfRows': new FormControl(null, [Validators.required]),
+      'noOfRows': new FormControl(null, [Validators.required]),
       'meal':  this.formBuilder.array(this.mealList.map(x =>!1)),
 
     }
@@ -132,8 +132,9 @@ export class ManageAirlinesComponent implements OnInit {
         totalNoOfSeats: this.airlineCreateForm.controls.totalNoOfSeats.value,
         totalNoOfBussinessSeats: this.airlineCreateForm.controls.totalNoOfBussinessSeats.value,
         price: this.airlineCreateForm.controls.price.value,
-        NoOfRows: this.airlineCreateForm.controls.NoOfRows.value,
-        meal:mealsSelected
+        noOfRows: this.airlineCreateForm.controls.noOfRows.value,
+        meal:mealsSelected,
+      
       }
       this.manageAirlineService.addFlight(airlineData).subscribe((response)=>{
         this.airlineCreateForm.reset();
@@ -152,8 +153,9 @@ export class ManageAirlinesComponent implements OnInit {
         totalNoOfSeats: this.airlineCreateForm.controls.totalNoOfSeats.value,
         totalNoOfBussinessSeats: this.airlineCreateForm.controls.totalNoOfBussinessSeats.value,
         price: this.airlineCreateForm.controls.price.value,
-        NoOfRows: this.airlineCreateForm.controls.NoOfRows.value,
-        meal:mealsSelected
+        noOfRows: this.airlineCreateForm.controls.noOfRows.value,
+        meal:mealsSelected,
+
       }
       this.manageAirlineService.updateFlight(airlineData).subscribe((response)=>{
         this.airlineCreateForm.reset();
