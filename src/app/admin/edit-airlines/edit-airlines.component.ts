@@ -54,11 +54,19 @@ export class EditAirlinesComponent implements OnInit {
 //   return optional === 0 ? true : this.state;
 // }
 
-// changeState = (f:any) => {
+changeState = (f:any) => {
   
-//   f.showHide = !f.showHide;
-//   alert(f.showHide);
-//   this.bookService.updateFlight(f);
-// }
+if(f.status==='active'){
+  f.status ='inactive';
+}
+else{
+  f.status ='active';
+}
+
+this.bookService.updateFlight(f).subscribe((response)=>{
+  console.log(response);
+})
+
+}
 
 }

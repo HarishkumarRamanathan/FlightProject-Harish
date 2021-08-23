@@ -134,7 +134,7 @@ export class ManageAirlinesComponent implements OnInit {
         price: this.airlineCreateForm.controls.price.value,
         noOfRows: this.airlineCreateForm.controls.noOfRows.value,
         meal:mealsSelected,
-      
+        status:'active'
       }
       this.manageAirlineService.addFlight(airlineData).subscribe((response)=>{
         this.airlineCreateForm.reset();

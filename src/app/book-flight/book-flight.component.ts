@@ -44,6 +44,7 @@ export class BookFlightComponent implements OnInit {
     //alert(Flight);
     this.result = this.data.filter((f: Flight) => (f.fromPlace === fromPlace.toLowerCase()
       && f.toPlace === toPlace.toLowerCase()
+      && f.status ==='active'
       && (f.scheduledDays.includes('daily') 
       || f.scheduledDays.includes(departDay))));
     //alert(this.result.length);
@@ -54,7 +55,7 @@ export class BookFlightComponent implements OnInit {
       }
 
       let returnDay = this.day[returnDate.getDay()];
-      this.returnFlights = this.data.filter((f: Flight) => (f.fromPlace === toPlace.toLowerCase() && f.toPlace === fromPlace.toLowerCase() && (f.scheduledDays.includes('daily') || f.scheduledDays.includes(returnDay))));
+      this.returnFlights = this.data.filter((f: Flight) => (f.fromPlace === toPlace.toLowerCase() && f.toPlace === fromPlace.toLowerCase() && f.status ==='active' && (f.scheduledDays.includes('daily') || f.scheduledDays.includes(returnDay))));
     }
 
 

@@ -24,7 +24,7 @@ export class ManageBookingService {
   }
 
   cancelTicket(id:string){
-    let endpoint="http://localhost:3000/bookingHistory/"+id;
+    let endpoint="http://localhost:8989/api/booking-service/cancel/"+id;
     console.log(endpoint);
     return this.http.delete<any>(endpoint,
     { observe: 'response' }).pipe(res => {
