@@ -53,10 +53,10 @@
         </div>
         <div>
             <div *ngIf="bookService.bookingData.length===2 && !bookFlag">
-                {{bookingData.price*row.length + returnBookingData.price*row.length  | currency:"₹"}}
+                {{bookingData.price*row.length + returnBookingData.price*row.length - discountCoupon   | currency:"₹"}}
             </div>
             <div *ngIf="bookService.bookingData.length===1 && !bookFlag">
-                {{bookingData.price*row.length  | currency:"Rs."}}
+                {{bookingData.price*row.length - discountCoupon | currency:"Rs." }}
             </div>
         </div>
         <!-- <div *ngIf="totalPrice>0">

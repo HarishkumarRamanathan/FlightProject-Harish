@@ -23,7 +23,7 @@ export class RegisterService {
 
   addUser(user: any) {
     console.log("user", user);
-    return this.http.post<any>('http://localhost:9001/register', user,
+    return this.http.post<any>('http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/user-service/register', user,
       { observe: 'response' }).pipe(res => {
         return res;
       });
@@ -32,13 +32,13 @@ export class RegisterService {
   
   validateLogin(login: any) {
 
-    return this.http.post<any>('http://localhost:9001/login', login, { observe: 'response' }).pipe(res => {
+    return this.http.post<any>('http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/user-service/login', login, { observe: 'response' }).pipe(res => {
       return res;
     });
   }
 
   generateJwtToken(login:any){
-    return this.http.post<any>('http://localhost:9001/authenticate', login, { observe: 'response' }).pipe(res => {
+    return this.http.post<any>('http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/user-service/authenticate', login, { observe: 'response' }).pipe(res => {
       return res;
     });
   }

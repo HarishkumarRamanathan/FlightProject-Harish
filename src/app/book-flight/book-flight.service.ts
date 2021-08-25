@@ -13,7 +13,9 @@ export class BookFlightService {
   constructor(private http: HttpClient) { }
 
   getFlights() {
-    let endpoint="http://localhost:9002/flights";
+    let endpoint="http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/manageflight-service/flights";
+    
+    //let endpoint="http://localhost:8989/api/manageflight-service/flights";
     console.log(endpoint);
     return this.http.get<any>(endpoint,
     { observe: 'response' }).pipe(res => {
@@ -26,7 +28,9 @@ export class BookFlightService {
   }
 
   updateFlight(bookFlight:Flight){
-      let endpoint="http://localhost:9002/flights/update/"+bookFlight.id;
+      let endpoint="http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/manageflight-service/flights/update/"+bookFlight.id;
+      //let endpoint="http://localhost:8989/api/manageflight-service/flights/update/"+bookFlight.id;
+      
       console.log(endpoint);
       console.log(bookFlight);
       return this.http.put<any>(endpoint,bookFlight,
@@ -39,7 +43,9 @@ export class BookFlightService {
     return throwError(error);
   }
   updateBookingHistory(bookingData:any){
-    let endpoint="http://localhost:9004/booking";
+    let endpoint="http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/booking-service/booking";
+    //let endpoint="http://localhost:8989/api/booking-service/booking";
+    
     console.log(endpoint);
     console.log(bookingData);
     return this.http.post<any>(endpoint,bookingData,
@@ -49,7 +55,9 @@ export class BookFlightService {
   }
 
   getFlightDetails(id:string){
-    let endpoint="http://localhost:9002/flights/"+id;
+    let endpoint="http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/manageflight-service/flights/"+id;
+    //let endpoint="http://localhost:8989/api/manageflight-service/flights/"+id;
+    
     console.log(endpoint);
     return this.http.get<any>(endpoint,
     { observe: 'response' }).pipe(res => {
@@ -57,7 +65,9 @@ export class BookFlightService {
     });
   }
   deleteFlight(id:string){
-    let endpoint="http://localhost:9002/flights/delete/"+id;
+    let endpoint="http://ec2-3-15-15-120.us-east-2.compute.amazonaws.com:8989/api/manageflight-service/flights/delete/"+id;
+    //let endpoint="http://localhost:8989/api/manageflight-service/flights/delete/"+id;
+    
     console.log(endpoint);
     return this.http.delete<any>(endpoint,
     { observe: 'response' }).pipe(res => {

@@ -26,6 +26,7 @@ export class BookingDetailsComponent implements OnInit {
   bookFlag:boolean=false;
   allCoupon:any;
   appliedCouponCode:any;
+  discountCoupon =0;
   constructor(public bookService:BookFlightService,private userService:UserService,private manageDiscountService:ManageDiscountService) { }
 
   ngOnInit(): void {
@@ -79,7 +80,11 @@ export class BookingDetailsComponent implements OnInit {
 
   changeCoupon(){
 console.log(this.appliedCouponCode)
-  }
+let filteredCoupon = this.allCoupon.filter((f: any) => (f.couponCode === this.appliedCouponCode));
+console.log(filteredCoupon)
+this.discountCoupon= filteredCoupon[0].maxAmount; 
+console.log(this.discountCoupon)
+}
   confirmBooking(){ 
     let data;
     if(this.bookService.bookingData.length==2){
